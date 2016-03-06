@@ -1,8 +1,10 @@
 package com.szogibalu.spring.data.jpa.entities;
 
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.AUTO;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -18,6 +20,9 @@ public class User {
 	private String firstName;
 
 	private String lastName;
+
+	@Enumerated(STRING)
+	private Status status;
 
 	public User() {
 	}
@@ -49,6 +54,14 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override

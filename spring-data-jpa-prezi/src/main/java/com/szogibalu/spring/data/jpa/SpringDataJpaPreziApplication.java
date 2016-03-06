@@ -28,8 +28,15 @@ public class SpringDataJpaPreziApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		LOGGER.info("Activating all users...");
+		userRepository.activateUsers();
+
+		loadUsers();
+	}
+
+	private void loadUsers() {
 		List<User> users = newArrayList(userRepository.findAll());
-		LOGGER.info("Load all users [{}]", users);
+		LOGGER.info("Load all users [{}]", users.size());
 		users.forEach(user -> LOGGER.info("{}", user));
 	}
 }
